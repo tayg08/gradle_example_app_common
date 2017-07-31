@@ -1,0 +1,40 @@
+// -*- coding: utf-8; mode: groovy -*-
+
+apply plugin: 'java'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+tasks.withType(AbstractCompile) each {
+	it.options.encoding = "UTF-8"
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+
+	compileOnly ('org.projectlombok:lombok:1.16.18') { force = true }
+	compileOnly ('javax.servlet:javax.servlet-api:3.1.0') { force = true }
+
+	compile ('com.google.guava:guava:22.0') { force = true }
+	compile ('org.apache.commons:commons-lang3:3.6') { force = true }
+
+	compile "org.slf4j:slf4j-api:$slf4jVer"
+	compile "org.slf4j:jul-to-slf4j:$slf4jVer"
+	compile "org.slf4j:jcl-over-slf4j:$slf4jVer"
+	compile "org.slf4j:jcl104-over-slf4j:$slf4jVer"
+	compile "org.slf4j:log4j-over-slf4j:$slf4jVer"
+	compile "org.slf4j:osgi-over-slf4j:$slf4jVer"
+	compile 'ch.qos.logback:logback-classic:1.2.3'
+
+	compile "org.springframework.boot:spring-boot-autoconfigure:$springBootVer"
+	compile "org.springframework.boot:spring-boot-starter-aop:$springBootVer"
+	compile "org.springframework.boot:spring-boot-starter-web:$springBootVer"
+	compile "org.springframework:spring-tx:$springTxVer"
+
+	testCompile ('junit:junit:4.12') { force = true }
+	testCompile ('org.mockito:mockito-core:2.8.53') { force = true }
+}
